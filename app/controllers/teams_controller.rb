@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-  has_many :users
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   # GET /teams

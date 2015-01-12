@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112000310) do
+ActiveRecord::Schema.define(version: 20150112022355) do
+
+  create_table "ballots", force: :cascade do |t|
+    t.integer  "round"
+    t.integer  "judge_id"
+    t.integer  "gov_id"
+    t.integer  "opp_id"
+    t.integer  "pm_id"
+    t.integer  "mg_id"
+    t.integer  "lo_id"
+    t.integer  "mo_id"
+    t.integer  "pm_speaks"
+    t.integer  "mg_speaks"
+    t.integer  "lo_speaks"
+    t.integer  "mo_speaks"
+    t.integer  "pm_rank"
+    t.integer  "mg_rank"
+    t.integer  "lo_rank"
+    t.integer  "mo_rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150112000310) do
     t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "type"
   end
 
 end

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  #belongs_to :team
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
