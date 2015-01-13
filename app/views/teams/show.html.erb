@@ -12,12 +12,12 @@
 
 <p>
   <strong>Teammate1:</strong>
-  <%= @team.teammate1_id %>
+  <%= @team.users.first.name %>
 </p>
 
 <p>
   <strong>Teammate2:</strong>
-  <%= @team.teammate2_id %>
+  <%= @team.users.second.name %>
 </p>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |

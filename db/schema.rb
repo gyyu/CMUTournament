@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112022355) do
+ActiveRecord::Schema.define(version: 20150113173712) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "round"
@@ -45,9 +45,14 @@ ActiveRecord::Schema.define(version: 20150112022355) do
     t.string   "name"
     t.string   "email"
     t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "type"
+    t.string   "password_digest"
+    t.string   "password_confirmation"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["team_id"], name: "index_users_on_team_id"
 
 end

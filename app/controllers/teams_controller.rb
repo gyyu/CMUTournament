@@ -15,6 +15,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+    @free_users = User.where(team_id: nil)
   end
 
   # GET /teams/1/edit
@@ -24,15 +25,30 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
+    @free_users = User.where(team_id: nil)
     @team = Team.new(team_params)
-
-    respond_to do |format|
-      if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render :show, status: :created, location: @team }
-      else
+    if (params["teammate1"].blank? || params["teammate2"].blank? ||
+        params["teammate1"] == params["teammate2"])
+      respond_to do |format|
         format.html { render :new }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        format.json { render json: {:error => "Must Select 2 unique users"}, status: :unprocessable_entity }
+      end
+    else
+      teammate1 = User.find(params["teammate1"])
+      teammate2 = User.find(params["teammate2"])
+
+      respond_to do |format|
+        if @team.save
+          teammate1.update(:team_id => @team.id)
+          teammate2.update(:team_id => @team.id)
+          puts teammate1.save
+          puts teammate2.save
+          format.html { redirect_to @team, notice: 'Team was successfully created.' }
+          format.json { render :show, status: :created, location: @team }
+        else
+          format.html { render :new }
+          format.json { render json: @team.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -69,6 +85,7 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:name, :school, :teammate1, :teammate2)
+      puts params
+      params.require(:team).permit(:name, :school)
     end
 end
