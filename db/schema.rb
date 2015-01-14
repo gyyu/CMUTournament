@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113173712) do
+ActiveRecord::Schema.define(version: 20150114204123) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "round"
@@ -32,7 +32,13 @@ ActiveRecord::Schema.define(version: 20150113173712) do
     t.integer  "mo_rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "room"
   end
+
+  add_index "ballots", ["gov_id"], name: "index_ballots_on_gov_id"
+  add_index "ballots", ["judge_id"], name: "index_ballots_on_judge_id"
+  add_index "ballots", ["opp_id"], name: "index_ballots_on_opp_id"
+  add_index "ballots", ["round"], name: "index_ballots_on_round"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

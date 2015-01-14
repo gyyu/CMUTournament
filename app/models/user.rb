@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
 
   has_secure_password
+
+
+  def self.make_judge
+    self.type = "judge"
+  end
 end
