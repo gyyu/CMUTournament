@@ -1,4 +1,23 @@
 class AdminController < ApplicationController
+  ROOMS = ["PH 126A",
+           "PH 225B",
+           "PH 226A",
+           "PH 226B",
+           "PH A18B",
+           "PH A18C",
+           "PH A19C",
+           "PH A19D",
+           "PH A21",
+           "PH A22",
+           "PH A20A",
+           "PH A21A",
+           "BH 237B",
+           "BH 235A",
+           "BH 255A",
+           "DH 1211",
+           "DH 1209",
+           "WEH 4627",
+           "WEH 4709"]
 
   def make_judge
     @users = User.where(:user_type => nil, :team_id => nil)
@@ -22,9 +41,26 @@ class AdminController < ApplicationController
     redirect_to "/admin/new_ballot"
   end
 
-  def new_round
+  def make_round
     @teams = Team.all
     @judges = User.where(:user_type => 'judge')
+    @debates = (Team.count + 1)/2
+    @rooms = ROOMS
+  end
+
+  def create_round
+    @teams = Team.all
+    @judges = User.where(:user_type => 'judge')
+    ballots = params['ballots']
+    round = params['round'].to_i
+    ballots.each do |k, d|
+      b = Ballot.new(:judge_id => d['judge'].to_i,
+                     :gov_id => d['gov'].to_i,
+                     :opp_id => d['opp'].to_i,
+                     :room => d['room'],
+                     :round => round)
+      puts "Error on #{k}, #{b.errors}" unless b.save
+    end
   end
 
 end

@@ -1,7 +1,9 @@
-class TeamsController < ApplicationController
+class BallotsController < ApplicationController
 
-  def new_round
-    @numeber_of_ballots = 10
+  def rounds
+    @rounds = Ballot.all.group_by(&:round).sort
+    puts "Rounds"
+    puts @rounds
   end
 
 end

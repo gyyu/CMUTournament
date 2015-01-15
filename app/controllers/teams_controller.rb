@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
-    @free_users = User.where(team_id: nil)
+    @free_users = User.where(:team_id => nil, :user_type => nil)
   end
 
   # GET /teams/1/edit
@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @free_users = User.where(team_id: nil)
+    @free_users = User.where(:team_id => nil, :user_type => nil)
     @team = Team.new(team_params)
     if (params["teammate1"].blank? || params["teammate2"].blank? ||
         params["teammate1"] == params["teammate2"])

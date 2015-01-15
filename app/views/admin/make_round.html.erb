@@ -5,18 +5,19 @@
     <%= label_tag "Round" %>
     <%= number_field_tag  "round", 0, :min => 0, :step => 1, :class => "form-control" %>
   </div>
-  <%@debates = (@teams.count + 19) / 2%>
   <table class="ballot-table" style="border-spacing: 5px;padding:5px 5px 5px 5px;">
     <tr style="text-align: center">
       <th > Gov </th>
       <th > Opp </th>
       <th > Judge </th>
+      <th > Room </th>
     </tr>
   <%@debates.times do |r|%>
     <tr style="margin-top:10px;margin-right:10px;">
       <td> <%= select_tag  "ballots[#{r}][gov]", options_from_collection_for_select(@teams, "id", "name"), :class => "form-control" %> </td>
       <td> <%= select_tag  "ballots[#{r}][opp]", options_from_collection_for_select(@teams, "id", "name"), :class => "form-control" %> </td>
       <td> <%= select_tag  "ballots[#{r}][judge]", options_from_collection_for_select(@judges, "id", "name"), :class => "form-control" %> </td>
+      <td> <%= select_tag  "ballots[#{r}][room]", options_for_select(@rooms), :class => "form-control" %> </td>
     </tr>
   <%end%>
   </table>
