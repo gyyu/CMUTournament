@@ -36,6 +36,21 @@ body {
   width: 50%;
 }
 
+.ballot-table th {
+ text-align: center;
+}
+.ballot-table tbody{
+  border-spacing: 10px;
+}
+.ballot-table td{
+  padding: 10px 5px 10px 5px;
+}
+
+.ballot-table tr {
+ margin-top: 10px;
+ border-spacing: 10px;
+}
+
 /* header*/
 #logo {
   float: left;

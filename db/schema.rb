@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114204123) do
+ActiveRecord::Schema.define(version: 20150115063615) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "round"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150114204123) do
     t.integer  "team_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.string   "type"
+    t.string   "user_type"
     t.string   "password_digest"
     t.string   "password_confirmation"
   end

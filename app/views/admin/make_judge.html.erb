@@ -1,0 +1,11 @@
+<h1>New Round</h1>
+
+<%=form_tag "/admin/new_judge", :method => "post" do%>
+  <div class="form-group">
+    <%= label_tag "Who do you want to elevate?" %>
+    <%= select_tag  "to_judge", options_from_collection_for_select(@users, "id", "name"), :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag "Higher Plane", :class => "btn btn-primary" %>
+  </div>
+<%end%>
