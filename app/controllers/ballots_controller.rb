@@ -6,8 +6,15 @@ class BallotsController < ApplicationController
     puts @rounds
   end
 
-  def edit()
-    @ballot = Ballot.find(params["ballot_id"]) #change this!!
+  def show
+    @ballot = Ballot.find(params["ballot_id"])
+  end
+
+  def edit
+    @ballot = Ballot.find(params["ballot_id"])
+    # if @ballot.submitted and !(logged_in_admin?)
+    #   render been_submitted
+    # end
   end
 
   def submit

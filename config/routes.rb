@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get 'rounds' => 'ballots#rounds'
-  get 'ballot/:ballot_id' => 'ballots#edit'
+  get 'ballot/edit/:ballot_id' => 'ballots#edit'
+  get 'ballot/:ballot_id' => 'ballots#show'
   post 'ballot/submit' => 'ballots#submit'
   scope 'admin' do
     match 'make_judge' => 'admin#make_judge', via: [:get, :post]
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     match 'create_ballot' => 'admin#create_ballot', via: [:post]
     match 'make_round' => 'admin#make_round', via: [:get, :post]
     match 'create_round' => 'admin#create_round', via: [:post]
+    match 'status' => 'admin#status', via: [:get]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

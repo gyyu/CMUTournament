@@ -64,4 +64,8 @@ class AdminController < ApplicationController
     redirect_to "/rounds"
   end
 
+  def status
+    @rounds = Ballot.all.group_by(&:round).sort
+  end
+
 end
