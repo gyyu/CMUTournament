@@ -41,6 +41,12 @@
             <%= number_field_tag  "ballot[mg_rank]", @ballot.mg_rank, :min => 1, :max => 4, :step => 1, :class => "form-control" %>
           </td>
         </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td id="gov-total-speaks"></td>
+          <td></td>
+        </tr>
       </table>
     </div>
     <div class="right-half">
@@ -74,6 +80,12 @@
           <td>
             <%= number_field_tag  "ballot[mo_rank]", @ballot.mo_rank, :min => 1, :max => 4, :step => 1, :class => "form-control" %>
           </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td id="opp-total-speaks"></td>
+          <td></td>
         </tr>
       </table>
     </div>

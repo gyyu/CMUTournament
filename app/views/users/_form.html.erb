@@ -28,6 +28,10 @@
     <%=f.label :password_confirmation, "Password Confirmation"%>
     <%= f.password_field :password_confirmation, :class => "form-control" %>
   </div>
+  <div class="form-group ">
+    <%=f.label :judge_label, "Judge? "%>
+    <%=check_box_tag "is_judge", "yes", false, :class => "form-control" %>
+  </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>
