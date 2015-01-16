@@ -12,9 +12,9 @@ class BallotsController < ApplicationController
 
   def edit
     @ballot = Ballot.find(params["ballot_id"])
-    # if @ballot.submitted and !(logged_in_admin?)
-    #   render been_submitted
-    # end
+    if @ballot.submitted and !(logged_in_admin?)
+      render "been_submitted"
+    end
   end
 
   def submit
