@@ -27,7 +27,7 @@ $( document ).ready(function () {
   sum_speaks()
 
 $('#edit_ballot').on('submit', function(e) {
-    e.preventDefault();
+
     console.log("here")
     var gov_id = Number($("#gov").val())
     var opp_id = Number($("#opp").val())
