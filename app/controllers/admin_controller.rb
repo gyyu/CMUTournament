@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_action :require_admin
+
   ROOMS = ["PH 126A",
            "PH 225B",
            "PH 226A",
@@ -66,5 +68,13 @@ class AdminController < ApplicationController
   def status
     @rounds = Ballot.all.group_by(&:round).sort
   end
+
+  private
+    def require_admin
+      unless logged_in_admin?
+        flash['danger'] = "You do not have permission for that"
+        redirect_to "/"
+      end
+    end
 
 end
