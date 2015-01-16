@@ -8,6 +8,11 @@ class BallotsController < ApplicationController
 
   def show
     @ballot = Ballot.find(params["ballot_id"])
+    unless @ballot.results_released ||
+          logged_in_admin? || @ballot.judge_id == current_user.id
+      flash['danger'] = "That ballot has not been released yet"
+      redirect_to "/"
+    end
   end
 
   def edit
