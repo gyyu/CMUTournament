@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   scope 'admin' do
     match 'make_judge' => 'admin#make_judge', via: [:get, :post]
     match 'new_judge' => 'admin#new_judge', via: [:post]
-    match 'new_ballot' => 'admin#new_ballot', via: [:get, :post]
-    match 'create_ballot' => 'admin#create_ballot', via: [:post]
+    # match 'new_ballot' => 'admin#new_ballot', via: [:get, :post]
+    # match 'create_ballot' => 'admin#create_ballot', via: [:post]
     match 'make_round' => 'admin#make_round', via: [:get, :post]
     match 'create_round' => 'admin#create_round', via: [:post]
     match 'status' => 'admin#status', via: [:get]

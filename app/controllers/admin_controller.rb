@@ -37,7 +37,6 @@ class AdminController < ApplicationController
   end
 
   def create_ballot
-    puts "HERE"
     redirect_to "/admin/new_ballot"
   end
 
