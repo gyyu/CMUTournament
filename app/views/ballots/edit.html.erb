@@ -6,8 +6,10 @@
 <div style="float:right;">
 <h1><%= @ballot.opp.name + " (Opp)"%></h1>
 </div>
-<%=form_tag "/ballot/submit", :method => "post" do %>
+<%=form_tag "/ballot/submit", :method => "post", :id => "edit_ballot" do %>
   <%=hidden_field_tag "ballot_id", @ballot.id%>
+  <%=hidden_field_tag "gov", @ballot.gov.id%>
+  <%=hidden_field_tag "opp", @ballot.opp.id%>
   <div style="display:inline-block;width:100%;">
     <div class="left-half">
       <table class="ballot-table">

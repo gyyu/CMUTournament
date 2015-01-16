@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @free_users = User.where(:team_id => nil, :user_type => nil)
+    @free_users = User.where(:team_id => nil, :user_type => nil).sort_by(&:name)
     @team = Team.new(team_params)
     if (params["teammate1"].blank? || params["teammate2"].blank? ||
         params["teammate1"] == params["teammate2"])

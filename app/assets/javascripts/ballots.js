@@ -11,7 +11,6 @@ $( document ).ready(function () {
     $(el).val(round_tenth($(el).val))
   })
 
-
   function sum_speaks(){
     var gov_speaks = round_tenth(Number($("#ballot_pm_speaks").val()) +
                                  Number($("#ballot_mg_speaks").val()))
@@ -26,4 +25,23 @@ $( document ).ready(function () {
   })
 
   sum_speaks()
+
+$('#edit_ballot').on('submit', function(e) {
+    e.preventDefault();
+    console.log("here")
+    var gov_id = Number($("#gov").val())
+    var opp_id = Number($("#opp").val())
+    var gov_total_speaks = Number($("#gov-total-speaks").text())
+    var opp_total_speaks = Number($("#opp-total-speaks").text())
+    console.log(gov_total_speaks, opp_total_speaks)
+    var winner_id = Number($("#ballot_winner_id").val())
+    // if (winner_id == gov_id) {
+    //   if (){
+
+    //   }
+    // } else {
+
+    // }
+  })
+
 })
