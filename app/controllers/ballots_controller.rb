@@ -12,8 +12,13 @@ class BallotsController < ApplicationController
 
   def edit
     @ballot = Ballot.find(params["ballot_id"])
-    if @ballot.submitted and !(logged_in_admin?)
-      render "been_submitted"
+    unless logged_in_admin?
+      if @ballot.judge != current_user
+        flash['danger'] = "You do not have permission to do that"
+        redirect_to root_path
+      elsif @ballot.submitted
+        redirect_to "/ballot/#{@ballot.id}"
+      end
     end
   end
 
@@ -25,7 +30,7 @@ class BallotsController < ApplicationController
     if @ballot.save
       redirect_to "/rounds"
     else
-      flash.now['error'] = @ballot.errors
+      flash.now['danger'] = @ballot.errors
     end
   end
 

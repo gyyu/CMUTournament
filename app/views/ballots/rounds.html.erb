@@ -18,16 +18,31 @@
               <th>Opp</th>
               <th>Judge</th>
               <th>Room</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <%round.each do |b|%>
-              <tr>
-                <td><%=b.gov.name%></td>
-                <td><%=b.opp.name%></td>
-                <td><%=b.judge.name%></td>
-                <td><%=b.room%></td>
-              </tr>
+              <%if b.results_released%>
+                <tr>
+                  <td class="<%=(b.winner_id == b.gov_id) ? 'winner' : 'loser' %>">
+                    <%=b.gov.name%>
+                  </td>
+                  <td class="<%=(b.winner_id == b.opp_id) ? 'winner' : 'loser' %>">
+                    <%=b.opp.name%>
+                  </td>
+                  <td><%=b.judge.name%></td>
+                  <td><%=b.room%></td>
+                  <td><%=link_to "View Ballot", "/ballot/#{b.id}"%></td>
+                </tr>
+              <%else%>
+                <tr>
+                  <td><%=b.gov.name%></td>
+                  <td><%=b.opp.name%></td>
+                  <td><%=b.judge.name%></td>
+                  <td><%=b.room%></td>
+                </tr>
+              <%end%>
             <%end%>
           </tbody>
         </table>

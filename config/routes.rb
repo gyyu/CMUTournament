@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+
   get 'sessions/new'
 
   resources :teams
 
-  root 'users#index'
+  root 'static_pages#home'
   resources :users
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

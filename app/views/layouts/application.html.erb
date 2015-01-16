@@ -12,11 +12,23 @@
       <div class="container">
         <nav>
           <ul class="nav navbar-nav navbar-left">
-            <li><%= link_to "Carnegie Mellon 2015", '/', id: "logo", class: "navbar-brand" %></li>
+            <li><%= link_to "Carnegie Mellon Invitational", '/', id: "logo", class: "navbar-brand" %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home",   '/' %></li>
-            <li><%= link_to "About",   '#' %></li>
+            <li><%= link_to "Pairngs",   '/rounds' %></li>
+            <%if logged_in_judge?%>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Ballots <b class="caret"></b>
+                  </a>
+                <ul class="dropdown-menu">
+                  <%Ballot.where(:judge_id => current_user.id).sort_by(&:round).each do |b|%>
+                    <li><%= link_to "Round #{b.round}", "/ballot/edit/#{b.id}" %></li>
+                  <%end%>
+                </ul>
+              </li>
+            <%end%>
             <%if logged_in?%>
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
