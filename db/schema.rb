@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115063615) do
+ActiveRecord::Schema.define(version: 20150116031323) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "round"
@@ -22,17 +22,22 @@ ActiveRecord::Schema.define(version: 20150115063615) do
     t.integer  "mg_id"
     t.integer  "lo_id"
     t.integer  "mo_id"
-    t.integer  "pm_speaks"
-    t.integer  "mg_speaks"
-    t.integer  "lo_speaks"
-    t.integer  "mo_speaks"
+    t.decimal  "pm_speaks"
+    t.decimal  "mg_speaks"
+    t.decimal  "lo_speaks"
+    t.decimal  "mo_speaks"
     t.integer  "pm_rank"
     t.integer  "mg_rank"
     t.integer  "lo_rank"
     t.integer  "mo_rank"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "room"
+    t.integer  "winner_id"
+    t.text     "rfd"
+    t.boolean  "submitted",        default: false, null: false
+    t.boolean  "released",         default: false, null: false
+    t.boolean  "results_released", default: false, null: false
   end
 
   add_index "ballots", ["gov_id"], name: "index_ballots_on_gov_id"

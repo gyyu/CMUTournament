@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get 'rounds' => 'ballots#rounds'
+  get 'ballot/:ballot_id' => 'ballots#edit'
+  post 'ballot/submit' => 'ballots#submit'
   scope 'admin' do
     match 'make_judge' => 'admin#make_judge', via: [:get, :post]
     match 'new_judge' => 'admin#new_judge', via: [:post]

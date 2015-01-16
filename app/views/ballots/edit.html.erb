@@ -1,0 +1,96 @@
+<%= javascript_include_tag 'ballots.js'%>
+
+<div style="float:left;">
+<h1><%=@ballot.gov.name + " (Gov)" %></h1>
+</div>
+<div style="float:right;">
+<h1><%= @ballot.opp.name + " (Opp)"%></h1>
+</div>
+<%=form_tag "/ballot/submit", :method => "post" do %>
+  <%=hidden_field_tag "ballot_id", @ballot.id%>
+  <div style="display:inline-block;width:100%;">
+    <div class="left-half">
+      <table class="ballot-table">
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Speaks</th>
+          <th>Rank</th>
+        </tr>
+        <tr class="form-group form-inline">
+          <td>Prime Minister</td>
+          <td>
+              <%= select_tag  "ballot[pm_id]", options_from_collection_for_select(@ballot.gov.users, "id", "name", @ballot.pm_id), :class => "form-control" %>
+          </td>
+          <td>
+              <%= number_field_tag  "ballot[pm_speaks]", @ballot.pm_speaks, :min => 23, :max => 27, :step => 0.1, :class => "form-control round" %>
+          </td>
+          <td>
+              <%= number_field_tag  "ballot[pm_rank]", @ballot.pm_rank, :min => 1, :max => 4, :step => 1, :class => "form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td>Member of Government</td>
+          <td>
+              <%= select_tag  "ballot[mg_id]", options_from_collection_for_select(@ballot.gov.users, "id", "name", @ballot.mg_id), :class => "form-control" %>
+          </td>
+          <td>
+            <%= number_field_tag  "ballot[mg_speaks]", @ballot.mg_speaks, :min => 23, :max => 27, :step => 0.1, :class => "form-control round" %>
+          </td>
+          <td>
+            <%= number_field_tag  "ballot[mg_rank]", @ballot.mg_rank, :min => 1, :max => 4, :step => 1, :class => "form-control" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="right-half">
+      <table class="ballot-table" style="float:right;">
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Speaks</th>
+          <th>Rank</th>
+        </tr>
+        <tr class="form-group form-inline">
+          <td>Leader of Opposition</td>
+          <td>
+              <%= select_tag  "ballot[lo_id]", options_from_collection_for_select(@ballot.opp.users, "id", "name", @ballot.lo_id), :class => "form-control" %>
+          </td>
+          <td>
+              <%= number_field_tag  "ballot[lo_speaks]", @ballot.lo_speaks, :min => 23, :max => 27, :step => 0.1, :class => "form-control round" %>
+          </td>
+          <td>
+              <%= number_field_tag  "ballot[lo_rank]", @ballot.lo_rank, :min => 1, :max => 4, :step => 1, :class => "form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td>Member of Opposition</td>
+          <td>
+              <%= select_tag  "ballot[mo_id]", options_from_collection_for_select(@ballot.opp.users, "id", "name", @ballot.mo_id), :class => "form-control" %>
+          </td>
+          <td>
+            <%= number_field_tag  "ballot[mo_speaks]", @ballot.mo_speaks, :min => 23, :max => 27, :step => 0.1, :class => "form-control round" %>
+          </td>
+          <td>
+            <%= number_field_tag  "ballot[mo_rank]", @ballot.mo_rank, :min => 1, :max => 4, :step => 1, :class => "form-control" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="center" style="width:100%;">
+    <div style="display:inline-block;">
+      <div class="form-group form-inline" style="marign-top:15px">
+        <%= label_tag "The better debating was done by " %>
+        <%= select_tag  "ballot[winner_id]", options_from_collection_for_select([@ballot.gov, @ballot.opp], "id", "name", @ballot.winner_id), :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div>
+  <div>Reason For Descision</div>
+    <%= text_area_tag "ballot[rfd]", @ballot.rfd, :class => "form-control rfd" %>
+  </div>
+  <div style="margin-top:20px;">
+    <%= submit_tag "Submit", :class => "btn btn-success center" %>
+  </div>
+<%end%>

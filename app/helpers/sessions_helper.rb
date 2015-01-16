@@ -26,9 +26,8 @@ module SessionsHelper
     return (!current_user.nil? && current_user.type == "admin")
   end
 
-  # Returns true if the user is logged in, false otherwise.
-  # def logged_in_judge_for?(ballot)
-  #   return (!current_user.nil? && current_user.type == "admin")
-  # end
+  def logged_in_judge?
+    return (!current_user.nil? && current_user.type == "judge")
+  end
 
 end

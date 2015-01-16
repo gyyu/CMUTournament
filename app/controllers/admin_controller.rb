@@ -61,6 +61,7 @@ class AdminController < ApplicationController
                      :round => round)
       puts "Error on #{k}, #{b.errors}" unless b.save
     end
+    redirect_to "/rounds"
   end
 
 end
