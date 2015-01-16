@@ -34,7 +34,7 @@
                 <td><%=b.room%></td>
                 <td><%="YES" if b.submitted%></td>
                 <td><%=b.winner.name unless b.winner.nil?%></td>
-                <td><a href"#">Show</a></td>
+                <td><%= link_to "Show", "/ballot/edit/#{b.id}" %></td>
               </tr>
             <%end%>
           </tbody>
