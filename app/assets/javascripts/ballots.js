@@ -24,24 +24,26 @@ $( document ).ready(function () {
     sum_speaks()
   })
 
-  sum_speaks()
+  //sum_speaks()
 
-$('#edit_ballot').on('submit', function(e) {
+  // $('#edit_ballot').on('submit', function(e) {
+  //   e.preventDefault()
+  //   console.log("here")
+  //   var gov_id = Number($("#gov").val())
+  //   var opp_id = Number($("#opp").val())
+  //   var gov_total_speaks = Number($("#gov-total-speaks").text())
+  //   var opp_total_speaks = Number($("#opp-total-speaks").text())
+  //   console.log(gov_total_speaks, opp_total_speaks)
+  //   var winner_id = Number($("#ballot_winner_id").val())
+  //   if (winner_id == gov_id) {
+  //     if (gov_total_speaks < opp_total_speaks){
 
-    console.log("here")
-    var gov_id = Number($("#gov").val())
-    var opp_id = Number($("#opp").val())
-    var gov_total_speaks = Number($("#gov-total-speaks").text())
-    var opp_total_speaks = Number($("#opp-total-speaks").text())
-    console.log(gov_total_speaks, opp_total_speaks)
-    var winner_id = Number($("#ballot_winner_id").val())
-    // if (winner_id == gov_id) {
-    //   if (){
+  //       return false;
+  //     }
+  //   } else {
 
-    //   }
-    // } else {
-
-    // }
-  })
+  //   }
+  //   $('#edit_ballot').submit()
+  // })
 
 })

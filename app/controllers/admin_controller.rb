@@ -45,7 +45,7 @@ class AdminController < ApplicationController
   def make_round
     @teams = Team.all.order('name ASC')
     @judges = User.where(:user_type => 'judge').order(:name)
-    @debates = (Team.count + 1)/2
+    @debates = (Team.count) / 2
     @rooms = ROOMS
   end
 
