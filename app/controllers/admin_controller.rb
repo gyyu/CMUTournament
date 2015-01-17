@@ -19,7 +19,8 @@ class AdminController < ApplicationController
            "DH 1211",
            "DH 1209",
            "WEH 4627",
-           "WEH 4709"]
+           "WEH 4709",
+           "WE 5302"]
 
   def make_judge
     @users = User.where(:user_type => nil, :team_id => nil)
