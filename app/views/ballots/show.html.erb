@@ -87,7 +87,7 @@
     </div>
   </div>
   <div>
-  <div>Reason For Descision</div>
-    <%= text_area_tag "ballot[rfd]", @ballot.rfd, :class => "form-control rfd", :disabled => true%>
+  <div>Reason For Descision: </div>
+  <div class="released-rfd"><%= h @ballot.rfd %> </div>
   </div>
 <%end%>
