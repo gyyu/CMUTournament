@@ -1,0 +1,50 @@
+<%= javascript_include_tag 'rounds.js'%>
+
+<h1>Admin Status</h1>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <%@rounds.each do |round_number, round|%>
+      <li id="#tab<%=round_number%>" class=<%='active' if round_number == 1%>>
+        <a data-toggle="tab">Round <%=round_number%></a>
+      </li>
+    <%end%>
+  </ul>
+  <div class="tab-content">
+    <%@rounds.each do |round_number, round|%>
+      <div id="tab<%=round_number%>" class="tab-pane <%='active' if round_number == 1%>">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Gov</th>
+              <th>PM Speaks</th>
+              <th>MG Speaks</th>
+              <th>Opp</th>
+              <th>LO Speaks</th>
+              <th>MO Speaks</th>
+              <th>Judge</th>
+              <th>Room</th>
+              <th>Submitted</th>
+              <th>Winner</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%round.each do |b|%>
+              <tr>
+                <td><%=b.gov.name%></td>
+                <td><%=b.pm_speaks%></td>
+                <td><%=b.mo_speaks%></td>
+                <td><%=b.opp.name%></td>
+                <td><%=b.lo_speaks%></td>
+                <td><%=b.mo_speaks%></td>
+                <td><%=b.winner.name unless b.winner.nil?%></td>
+                <td><%= link_to "Show", "/ballot/edit/#{b.id}" %></td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    <%end%>
+  </div>
+</li>

@@ -70,6 +70,10 @@ class AdminController < ApplicationController
     @rounds = Ballot.all.group_by(&:round).sort
   end
 
+  def round_report
+    @rounds = Ballot.all.group_by(&:round).sort
+  end
+
   private
     def require_admin
       unless logged_in_admin?
