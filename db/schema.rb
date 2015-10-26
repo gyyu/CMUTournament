@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116031323) do
+ActiveRecord::Schema.define(version: 20151026225037) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "round"
@@ -22,22 +22,22 @@ ActiveRecord::Schema.define(version: 20150116031323) do
     t.integer  "mg_id"
     t.integer  "lo_id"
     t.integer  "mo_id"
-    t.decimal  "pm_speaks"
-    t.decimal  "mg_speaks"
-    t.decimal  "lo_speaks"
-    t.decimal  "mo_speaks"
+    t.decimal  "pm_speaks",        precision: 4, scale: 2
+    t.decimal  "mg_speaks",        precision: 4, scale: 2
+    t.decimal  "lo_speaks",        precision: 4, scale: 2
+    t.decimal  "mo_speaks",        precision: 4, scale: 2
     t.integer  "pm_rank"
     t.integer  "mg_rank"
     t.integer  "lo_rank"
     t.integer  "mo_rank"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.string   "room"
     t.integer  "winner_id"
     t.text     "rfd"
-    t.boolean  "submitted",        default: false, null: false
-    t.boolean  "released",         default: false, null: false
-    t.boolean  "results_released", default: false, null: false
+    t.boolean  "submitted",                                default: false, null: false
+    t.boolean  "released",                                 default: false, null: false
+    t.boolean  "results_released",                         default: false, null: false
   end
 
   add_index "ballots", ["gov_id"], name: "index_ballots_on_gov_id"

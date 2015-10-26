@@ -7,9 +7,9 @@ $( document ).ready(function () {
     return (Math.round(n*10)/10)
   }
 
-  $(".round").each(function(i, el){
-    $(el).val(round_tenth($(el).val))
-  })
+  // $(".round").each(function(i, el){
+  //   $(el).val(round_tenth($(el).val))
+  // })
 
   function sum_speaks(){
     var gov_speaks = round_tenth(Number($("#ballot_pm_speaks").val()) +
