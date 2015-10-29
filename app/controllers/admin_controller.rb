@@ -68,11 +68,23 @@ class AdminController < ApplicationController
 
   def status
     @rounds = Ballot.all.group_by(&:round).sort
+    @selected = @rounds.last[0]
   end
 
   def round_report
     @rounds = Ballot.all.group_by(&:round).sort
+    @selected = @rounds.last[0]
   end
+
+  def release_results
+    #add error handling here
+    @round = params['round'].to_i
+    ballots = Ballot.where(:round => @round)
+    ballots.each do |b|
+      #add exceptions for teams that don't want public results
+      b.update_attribute(:released, true)
+    end
+  end 
 
   private
     def require_admin

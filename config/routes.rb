@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'ballot/:ballot_id' => 'ballots#show'
   post 'ballot/submit' => 'ballots#submit'
   scope 'admin' do
+    match '/' => 'admin#home', via: [:get]
     match 'make_judge' => 'admin#make_judge', via: [:get, :post]
     match 'new_judge' => 'admin#new_judge', via: [:post]
     # match 'new_ballot' => 'admin#new_ballot', via: [:get, :post]
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     match 'make_round' => 'admin#make_round', via: [:get, :post]
     match 'create_round' => 'admin#create_round', via: [:post]
     match 'status' => 'admin#status', via: [:get]
+    match 'release_results' => 'admin#release_results', via: [:get]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -3,8 +3,10 @@ $( document ).ready(function () {
  // $("#ballot_mg_speaks").val(Math.round($("#ballot_mg_speaks").val()*10)/10)
  // $("#ballot_lo_speaks").val(Math.round($("#ballot_lo_speaks").val()*10)/10)
  // $("#ballot_mo_speaks").val(Math.round($("#ballot_mo_speaks").val()*10)/10)
-  function round_tenth(n) {
-    return (Math.round(n*10)/10)
+
+  /*is rounding still needed in new model?*/
+  function round_hundreth(n) {
+    return n;//(Math.round(n*100)/100)
   }
 
   // $(".round").each(function(i, el){
@@ -12,10 +14,10 @@ $( document ).ready(function () {
   // })
 
   function sum_speaks(){
-    var gov_speaks = round_tenth(Number($("#ballot_pm_speaks").val()) +
+    var gov_speaks = round_hundreth(Number($("#ballot_pm_speaks").val()) +
                                  Number($("#ballot_mg_speaks").val()))
     $("#gov-total-speaks").text(String(gov_speaks))
-    var opp_speaks = round_tenth(Number($("#ballot_lo_speaks").val()) +
+    var opp_speaks = round_hundreth(Number($("#ballot_lo_speaks").val()) +
                                  Number($("#ballot_mo_speaks").val()))
     $("#opp-total-speaks").text(String(opp_speaks))
   }
@@ -24,7 +26,7 @@ $( document ).ready(function () {
     sum_speaks()
   })
 
-  //sum_speaks()
+  sum_speaks()
 
   // $('#edit_ballot').on('submit', function(e) {
   //   e.preventDefault()
