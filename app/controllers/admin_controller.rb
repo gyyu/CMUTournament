@@ -68,12 +68,12 @@ class AdminController < ApplicationController
 
   def status
     @rounds = Ballot.all.group_by(&:round).sort
-    @selected = @rounds.last[0]
+    @selected = @rounds.count > 0 ? @rounds.last[0] : 1
   end
 
   def round_report
     @rounds = Ballot.all.group_by(&:round).sort
-    @selected = @rounds.last[0]
+    @selected = @rounds.count > 0 ? @rounds.last[0] : 1
   end
 
   def release_results
