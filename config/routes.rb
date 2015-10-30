@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rooms
+
   get 'static_pages/home'
 
   get 'sessions/new'

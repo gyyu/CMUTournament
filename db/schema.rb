@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026225037) do
+ActiveRecord::Schema.define(version: 20151029232828) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "round"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 20151026225037) do
   add_index "ballots", ["judge_id"], name: "index_ballots_on_judge_id"
   add_index "ballots", ["opp_id"], name: "index_ballots_on_opp_id"
   add_index "ballots", ["round"], name: "index_ballots_on_round"
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "room_name",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

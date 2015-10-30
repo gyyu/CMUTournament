@@ -1,26 +1,7 @@
 class AdminController < ApplicationController
   before_action :require_admin
 
-  ROOMS = ["PH 126A",
-           "PH 225B",
-           "PH 226A",
-           "PH 226B",
-           "PH A18B",
-           "PH A18C",
-           "PH A19C",
-           "PH A19D",
-           "PH A21",
-           "PH A22",
-           "PH A20A",
-           "PH A21A",
-           "BH 237B",
-           "BH 235A",
-           "BH 255A",
-           "DH 1211",
-           "DH 1209",
-           "WEH 4627",
-           "WEH 4709",
-           "WEH 5302"]
+  ROOMS = ["room1"]
 
   def make_judge
     @users = User.where(:user_type => nil, :team_id => nil)
@@ -47,7 +28,7 @@ class AdminController < ApplicationController
     @teams = Team.all.order('name ASC')
     @judges = User.where(:user_type => 'judge').order(:name)
     @debates = (Team.count) / 2
-    @rooms = ROOMS
+    @rooms = Room.all.map {|r| r.room_name} #ROOMS
   end
 
   def create_round
@@ -84,7 +65,14 @@ class AdminController < ApplicationController
       #add exceptions for teams that don't want public results
       b.update_attribute(:released, true)
     end
-  end 
+  end
+
+  def add_room
+    name = params["room_name"]
+    unless name.blank?
+      Room.new(:room_name => name)
+    end
+  end
 
   private
     def require_admin
