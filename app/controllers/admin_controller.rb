@@ -62,6 +62,7 @@ class AdminController < ApplicationController
     ballots.each do |b|
       #add exceptions for teams that don't want public results
       b.update_attribute(:released, true)
+      b.update_attribute(:results_released, true)
     end
   end
 
