@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'rounds.js'%>
 
-<h1>Admin Status</h1>
+<h1>Round Report</h1>
 
 <div class="tabbable">
   <ul class="nav nav-tabs">
@@ -17,9 +17,11 @@
           <thead>
             <tr>
               <th>Gov</th>
+              <th>PM</th>
               <th>PM Speaks</th>
               <th>MG Speaks</th>
               <th>Opp</th>
+              <th>LO</th>
               <th>LO Speaks</th>
               <th>MO Speaks</th>
               <th>Winner</th>
@@ -30,9 +32,11 @@
             <%round.each do |b|%>
               <tr>
                 <td><%=b.gov.name%></td>
+                <td><%=b.pm_id.nil? ? "" : User.find(b.pm_id).name %></td>
                 <td><%=b.pm_speaks%></td>
                 <td><%=b.mo_speaks%></td>
                 <td><%=b.opp.name%></td>
+                <td><%=b.lo_id.nil? ? "" : User.find(b.lo_id).name %></td>
                 <td><%=b.lo_speaks%></td>
                 <td><%=b.mo_speaks%></td>
                 <td><%=b.winner.nil? ? "" : "#{b.winner.name + " " + b.winner_side}" %></td>

@@ -1,8 +1,6 @@
 class AdminController < ApplicationController
   before_action :require_admin
 
-  ROOMS = ["room1"]
-
   def make_judge
     @users = User.where(:user_type => nil, :team_id => nil)
   end
