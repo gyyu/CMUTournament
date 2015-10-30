@@ -26,7 +26,7 @@ class AdminController < ApplicationController
     @teams = Team.all.order('name ASC')
     @judges = User.where(:user_type => 'judge').order(:name)
     @debates = (Team.count) / 2
-    @rooms = Room.all.map {|r| r.room_name} #ROOMS
+    @rooms = Room.all.map {|r| r.room_name}
   end
 
   def create_round
@@ -72,13 +72,5 @@ class AdminController < ApplicationController
       Room.new(:room_name => name)
     end
   end
-
-  private
-    def require_admin
-      unless logged_in_admin?
-        flash['danger'] = "You do not have permission for that"
-        redirect_to "/"
-      end
-    end
 
 end

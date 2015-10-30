@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :destroy]
 
   # GET /users
   # GET /users.json
@@ -75,4 +76,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+
+#    to implement IMPORTANT
+#    def require_user_or_admin
+#    end
+
 end
