@@ -4,7 +4,7 @@
 <div class="tabbable">
   <ul class="nav nav-tabs">
     <%@rounds.each do |round_number, round|%>
-      <li id="#tab<%=round_number%>" class=<%='active' if round_number == 1%>>
+      <li id="#tab<%=round_number%>" class=<%='active' if round_number == @selected%>>
         <a data-toggle="tab">Round <%=round_number%></a>
       </li>
     <%end%>
