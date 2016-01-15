@@ -1,0 +1,37 @@
+
+
+/rounds
+/ballot/#n - view (or edit?)
+
+Admin Endpoints:
+  http://localhost:3000/admin/make_round
+  http://localhost:3000/admin/status
+  admin status only way to edit post submit
+
+DONE:
+  fix decimals http://stackoverflow.com/questions/13255987/ruby-on-rails-how-to-migrate-code-from-float-to-decimal
+
+TODO
+  Pronouns (new required? text field in user DB, default "ask")
+  *make/edit room list
+    new model rooms? I guess
+  make/edit account
+  Mass user creation?
+  Admin Control Pannel
+    make round
+    release results
+    round report
+    config
+    make settings
+      speak limits/scale
+      *tab room override ballots
+      public/private
+      homepage
+    Add rooms
+    etc
+  make teams
+  add remove students as users?
+  private vs public
+  Register Team and Register Judge control pannel
+  report view
+  check all decimal displays
