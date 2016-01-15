@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :teams
 
   root 'static_pages#home'
+  get    'judge_list'   => 'static_pages#judge_list'
   resources :users
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

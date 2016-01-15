@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   def index
   end
 
+  def judge_list
+  end
+  
   def require_admin
     unless logged_in_admin?
       flash['danger'] = "You do not have permission for that"
