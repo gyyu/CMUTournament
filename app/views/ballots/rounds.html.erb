@@ -11,7 +11,7 @@
   </ul>
   <div class="tab-content">
     <%@rounds.each do |round_number, round|%>
-      <div id="tab<%=round_number%>" class="tab-pane <%='active' if round_number == 1%>">
+      <div id="tab<%=round_number%>" class="tab-pane <%='active' if round_number == @selected%>">
         <table class="table">
           <thead>
             <tr>
