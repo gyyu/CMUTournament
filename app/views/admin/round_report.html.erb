@@ -48,7 +48,7 @@
                 <td><%=b.lo_id.nil? ? "" : User.find(b.lo_id).name %></td>
                 <td><%=b.lo_speaks%></td>
                 <td><%=b.lo_rank%></td>
-                <td><%=b.mo_id.nil? ? "" : User.find(b.pm_id).name %></td>
+                <td><%=b.mo_id.nil? ? "" : User.find(b.mo_id).name %></td>
                 <td><%=b.mo_speaks%></td>
                 <td><%=b.mo_rank%></td>
                 <td><%=b.winner.nil? ? "" : "#{b.winner_side}" %></td>
