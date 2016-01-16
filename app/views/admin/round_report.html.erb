@@ -41,7 +41,7 @@
                 <td><%=b.pm_id.nil? ? "" : User.find(b.pm_id).name %></td>
                 <td><%=b.pm_speaks%></td>
                 <td><%=b.pm_rank%></td>
-                <td><%=b.mg_id.nil? ? "" : User.find(b.pm_id).name %></td>
+                <td><%=b.mg_id.nil? ? "" : User.find(b.mg_id).name %></td>
                 <td><%=b.mg_speaks%></td>
                 <td><%=b.mg_rank%></td>
                 <td><%=b.opp.name%></td>
