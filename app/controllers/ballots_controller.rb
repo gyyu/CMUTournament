@@ -3,7 +3,7 @@ class BallotsController < ApplicationController
   def rounds
     #sort by round number then the ballots by gov team
     @rounds = Ballot.all.group_by(&:round).sort
-    @rounds = @rounds.each{|n, round| round.sort_by{|b| b.gov.name}}
+    @rounds = @rounds.map{|n, round| [n, round.sort_by{|b| b.gov.name}]}
     @selected = @rounds.count > 0 ? @rounds.last[0] : 1
   end
 
